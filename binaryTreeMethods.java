@@ -18,10 +18,10 @@ public void makePerfect() {
 }
 
 private IntTreeNode makePerfect(IntTreeNode root, int heightVal) {
-    if (!(root == null && heightVal == 0)) {
-        if (root == null && heightVal == 1) {
+    if (!(root == null && heightVal == 0)) {
+        if (root == null && heightVal == 1) {
             root = new IntTreeNode(0);
-        } else if (root == null && heightVal > 1) {
+        } else if (root == null && heightVal > 1) {
             root = new IntTreeNode(0);
             root.left = makePerfect(root.left, heightVal - 1);
             root.right = makePerfect(root.right, heightVal - 1);
@@ -39,7 +39,7 @@ public int height() {
 }
 
 private int height(IntTreeNode root) {
-    if (root == null) {
+    if (root == null) {
         return 0;
     } else {
         return 1 + Math.max(height(root.left), height(root.right));
@@ -56,9 +56,9 @@ public void evenLevels() {
 }
 
 private IntTreeNode evenLevels(IntTreeNode root, int level) {
-    if (root != null) {
-        if (root.left == null && root.right == null && (level % 2 != 0)) {
-            root = null;
+    if (root != null) {
+        if (root.left == null && root.right == null && (level % 2 != 0)) {
+            root = null;
         } else {
             root.left = evenLevels(root.left, level + 1);
             root.right = evenLevels(root.right, level + 1);
@@ -76,8 +76,8 @@ public ArrayList<Integer> inOrderList() {
 }
 
 private ArrayList<Integer> inOrderList(IntTreeNode root, ArrayList<Integer> inOrderList) {
-    if (root != null) {
-        if (root.left == null && root.right == null) {
+    if (root != null) {
+        if (root.left == null && root.right == null) {
             inOrderList.add(root.data);
         } else {
             inOrderList(root.left, inOrderList);
@@ -102,13 +102,13 @@ public IntTree combineWith(IntTree t2) {
 }
 
 private IntTreeNode combineWith(IntTreeNode root1, IntTreeNode root2, IntTreeNode root3) {
-    if (root1 == null && root2 == null) {
-        root3 = null;
-    } else if (root1 != null && root2 == null) {
+    if (root1 == null && root2 == null) {
+        root3 = null;
+    } else if (root1 != null && root2 == null) {
         root3 = new IntTreeNode(1);
         root3.left = combineWith(root1.left, root2, root3.left);
         root3.right = combineWith(root1.right, root2, root3.right);
-    } else if (root1 == null && root2 != null) {
+    } else if (root1 == null && root2 != null) {
         root3 = new IntTreeNode(2);
         root3.left = combineWith(root1, root2.left, root3.left);
         root3.right = combineWith(root1, root2.right, root3.right);
@@ -128,12 +128,12 @@ public void tighten() {
 }
 
 private IntTreeNode tighten(IntTreeNode root) {
-    if (root != null) {
-        if (root == null) {
-            root = null;
-        } else if (root.left == null && root.right != null) {
+    if (root != null) {
+        if (root == null) {
+            root = null;
+        } else if (root.left == null && root.right != null) {
             root = tighten(root.right);
-        } else if (root.left != null && root.right == null) {
+        } else if (root.left != null && root.right == null) {
             root = tighten(root.left);
         } else {
             root.left = tighten(root.left);
