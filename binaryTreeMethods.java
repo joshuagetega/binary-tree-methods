@@ -277,7 +277,7 @@ public Boolean equals2(IntTreeNode root1, IntTreeNode root2) {
     } else if (root1.left == null && root2.left == null && root1.right != null && root2.right != null && root1.right.data == root2.right.data && equals2(root1.right, root2.right)) {
         return true;
     } else {
-        return false;
+        return false;
     }
 }
 
@@ -316,7 +316,7 @@ private Boolean isFull(IntTreeNode root) {
     if (root == null || (root.left == null && root.right == null)) {
         return true;
     } else if ((root.left != null && root.right == null) || (root.left == null && root.right != null)) {
-        return false;
+        return false;
     } else {
         return (isFull(root.left) && isFull(root.right));
     }
